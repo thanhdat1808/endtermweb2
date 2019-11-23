@@ -1,0 +1,687 @@
+.header{
+	width: 100%;
+	height: 60px;
+	background: #cd1818;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	z-index: 2;
+}
+.mobimenu, .mobicart{
+	display: none;
+}
+.name{
+	min-width: 30%;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+}
+.name img{
+	width: 60px;
+	height: auto;
+	margin-bottom: 10px;
+}
+.name a{
+	font-family: 'Dancing Script', cursive;
+	font-size: 45px;
+	margin-bottom: 20px;
+	color: black;
+}
+.name a:hover{
+	text-decoration: none;
+	color: black;
+}
+.funtion{
+	width: 60%;
+	display: flex;
+}
+.search{
+	min-width: 50%;
+	height: 40px;
+	border: 0.5px solid red;
+	margin-top: 10px;
+	margin-left: 20px;
+	background: white;
+	border-radius: 20px;
+}
+.search input{
+	width: 88%;
+	height: 38px;
+	border: 0px;
+	border-radius: 20px;
+	padding-left: 20px;
+}
+.search input:focus{
+	outline-style: none;
+}
+.search button{
+	width: 10%;
+	background: no-repeat;
+	border: 0px;
+	size: 40px;
+}
+.search button:hover{
+	opacity: 0.5;
+}
+.search button:active{
+	outline-style: none;
+}
+.search button:focus{
+	outline-style: none;
+}
+.cart{
+	min-width: 15%;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: right;
+}
+.cart li{
+	list-style: none;
+}
+.cart a{
+	max-width: 100px;
+	font-size: 15px;
+	color: white;
+/*	border: 1px solid white;*/
+	border-radius: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	float: right;	
+	display: flex;
+	text-align: center;
+}
+.cart i{
+	font-size: 40px;
+	margin-right: 10px;
+}
+.cart a:hover{
+	background: white;
+	text-decoration: none;
+	color: red;
+}
+.account{
+	min-width:30%;
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	display: flex;
+	height: 50px;
+}
+.account i{
+	font-size: 40px;
+}
+.account button{
+	background-color: #cd1818;
+	border:none;
+	font-size: 15px;
+	border-radius: 10px;
+	color: white;
+	max-width: 120px;
+	text-align: center;
+	display: flex;
+	padding-left: 8.4px;
+	padding-right: 8.4px;
+	margin-left: 20px;
+}
+.account button:hover{
+	background: white;
+	color: #cd1818;
+}
+.account button:focus{
+	outline-style: none;
+}
+.account a:hover{
+	text-decoration: none;
+}
+.account b{
+	padding-left:-20px;
+}
+.account input{
+	margin-left: 10px;
+	height: 50px;
+	border-radius: 10px;
+	border: none;
+	background: no-repeat;
+	color: white;
+}
+.account input:hover{
+	background: white;
+	color: red;
+}
+.menu{
+	width: 100%;
+	height: 40px;
+	background: #151515;
+	position: fixed;
+	margin-top: 60px;
+	color: white;
+	display: flex;
+	z-index: 1;
+	justify-content: center;
+	text-align: center;
+}
+.menu ul{
+	list-style-type: none;
+}
+.menu li{
+	float: left;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+.menu li:hover{
+	background: #424242;
+}
+.menu i{
+	font-size: 38px;
+	margin-right: 5px;
+}
+.menu a{
+	color: white;
+}
+.menu a:hover{
+	color: white;
+	text-decoration: none;
+}
+.mobilist{
+	display: none;
+	width: 80px;
+}
+.view{
+	padding-top: 150px;
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	text-align: center;
+	z-index: 10;
+}
+.product{
+	justify-content: center;
+	text-align: center;
+}
+.product img{
+	width: auto;
+	height: 200px;
+	margin-left: 10px;
+	background: no-repeat;
+}
+.product button{
+	width: 70%;
+	height: 60px;
+	margin-top: 5px;
+	margin-left: 15%;
+	background: none;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
+	border-radius: 5px;
+	border: 1px solid red;
+}
+.product button:hover{
+	outline-style: none;
+	opacity: 0.8;
+	transform: scale(1.1);
+}
+.product button:active{
+	outline-style: none;
+	opacity: 1.5;
+}
+.product button:focus{
+	outline-style: none;
+}
+.product a{
+	color: black;
+}
+.product a:hover{
+	color: black;
+	text-decoration: none;
+}
+.product h3:hover{
+	
+}
+.product img:hover{
+	transform: scale(1.2);
+} 
+.product i{
+	font-size: 30px;
+}
+.product b{
+}
+.modal-content{
+	border-radius: 20px;
+	background:linear-gradient(60deg,pink,#BE81F7,#8181F7);
+}
+.form-login input{
+	width: 80%;
+	height: 40px;
+	text-align: center;
+	margin-top: 10px;
+	border-radius: 10px;
+	border: 1px solid #A4A4A4;
+	outline-style: none;
+	font-size: 20px;
+}
+.signup{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+      display: flex;
+      justify-content: center;
+      /*background-image: url(https://hinhanhdep.net/wp-content/uploads/2018/04/hinh-nen-may-tinh-1.jpg);*/
+      background-repeat: no-repeat;
+    }
+    .content-signup{
+    	height: 80%;
+      margin-top: 100px;
+      align-items: center;
+      position: absolute;
+      display: flex;      
+      justify-content: center;
+      border: 1px solid black;
+      border-radius: 20px;
+      text-align: center;
+      background:linear-gradient(60deg,pink,#BE81F7,#8181F7);
+    }
+    .content-signup h1{
+    	margin-left: 30px;
+    }
+    .content-signup a:hover{
+      text-decoration: none;
+    }
+   .content-signup form{
+      margin-top: 10px;
+    }
+    .content-signup img{
+      width: 100%;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    .content-signup input {
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid #EEEEEE;
+      margin-top: 10px; 
+      padding-left: 10px; 
+      width: 80%;
+    }
+    .content-signup input:hover{
+      opacity: 0.8;
+    }
+    .admin{
+    	width: 100%;
+    	}
+    .content{
+    	margin-left: 280px;
+    }
+    .menuleft{
+    	width: 100%;
+    	background: black;
+    	text-align: center;
+    	height: 100%;
+    	float: left;
+    	display: block;
+    	z-index: 1;
+    }
+    .avatar{
+    	display: flex;
+    	justify-content: center;
+    }
+    .avatar img{
+    width: 80%;
+    }
+    .manager{
+
+    	text-align: center;
+    	display: flex;
+    	justify-content: center;
+    }
+    .manager ul{
+    	list-style: none;
+    }
+    .manager li{
+    	margin-left: -40px;
+    	font-size: 20px;
+    	margin-top: 20px;
+    	color: white;
+    }
+    .manager li:hover{
+		background: white;
+		color: black;
+    }
+    .manager input{
+    	background: no-repeat;
+    	border: 1px solid white;
+    	color: white;
+    	height: 40px;
+    	margin-bottom: 45px;
+    	border-radius: 10px;
+    }
+    .manager input:hover{
+    	background: white;
+		color: black;
+    }
+    .manager a:hover{
+    	text-decoration: none;
+    }
+    .add{
+    	justify-content: center;
+    }
+    .add button{
+    	width: 80px;
+    	height: 80px;
+    	font-size: 30px;
+    	border-radius: 50%;
+    	border: 1px;
+    }
+    .add button:hover{
+    	background: silver;
+    }
+    .addpro{
+    	width: 100%;
+    	margin-top: 20px;
+    	justify-content: center;
+    	text-align: center;
+    }
+    .addpro input{
+    	width: 100%;
+    	height: 40px;
+    	margin-top: 20px;
+    	margin-bottom: 20px;
+    	border-radius: 20px;
+    	border: 1px solid silver;
+    	outline-style: none;
+    	padding-left: 20px;
+    }
+    .addpro input:hover{
+    	background: #E6E6E6;
+    }
+    .addpro input:active{
+    	outline-style: none;
+    }
+    .addpro select{
+    	height: 40px;
+    	border-radius: 20px;
+    	text-align: center;
+    	outline-style: none;
+    	padding-left: 5px;
+    }
+    .addpro textarea{
+    	width: 100%;
+    }
+    .update input{
+    	width: 20%;
+    	margin-left: 20px;
+    	margin-bottom: 5px;
+    }
+    .update input:hover{
+    	background: silver;
+    }
+    .title{
+    	font-size: 25px;
+    }
+    .list{
+    	width: 100%;
+    	font-size: 15px;
+    	margin-left: 20px;
+    	text-align: center;
+    }
+    .list tr{
+    	border: 1px solid black;
+    }
+    .list td{
+    	border: 1px solid black;
+    }
+    .list img{
+    	width: 40px;
+    	height: auto;
+    }
+    .giohang{
+    	width: 100%;
+    	justify-content: center;
+    }
+    .giohang h2{
+    	margin-top: 30px;
+    }
+    .pagecart{
+    	width: 80%;
+    	text-align: center;
+    	font-size: 20px;
+    }
+   	.pagecart img{
+   		width: 200px;
+   		margin-top: 20px;
+   	}
+   	.pagecart input{
+   		width: 60px;
+   	}
+   	.pagecart tr{
+   		margin-top: 20px;
+   	}
+   	.total{
+   		width: 100%;
+   		text-align: center;
+   	}
+   	.button{
+   		width: 100%;
+   		justify-content: center;
+   		text-align: center;
+   		margin-bottom: 50px;
+   		font-size: 35px;
+   	}
+   	.button button{
+   		width: 20%;
+   		height: 60px;
+   		background: red;
+   		border: 1px;	
+   	}
+   	.button button:hover{
+   		opacity: 0.9;
+   	}
+   	.chitiet{
+   		width: 100%;
+   		justify-content: center;
+   		text-align: center;
+   	}
+   	.chitiet img{
+   		width: 400px;
+   	}
+   	.buttonct{
+   		width: 100%;
+   		justify-content: center;
+   		text-align: center;
+   	}
+   	.buttonct a{
+   	
+	margin-top: 5px;
+	text-align: center;
+	justify-content: center;
+	font-size: 20px;
+	border-radius: 10px;
+	border: none;
+	margin-left: 50px;
+   	}
+   	.buttonct a:hover{
+   		text-decoration: none;
+   	}
+   	.buttonct button{
+   		background: no-repeat;
+   		border-radius: 10px;
+   		border: 0.5px solid green;
+   		width: 220px;
+		height: 60px;
+		margin-top: 10px;
+   	}
+   	.buttonct button:hover{
+		   opacity: 0.8;
+		   transform: scale(1.1);
+   	}
+   	.customer table{
+   		width: 100%;
+   		text-align: center;
+   		margin-top: 20px;
+   	}
+   	.customer tr{
+   		border: 1px solid black;
+   	}
+   	.customer td{
+   		border: 1px solid black;
+   	}
+   	.customer input{
+   		border: none;
+   	}
+   	.customer input:hover{
+   		opacity: 0.8;
+   	}
+   	.info{
+
+   	}
+   	.info table{
+   		margin-left: 20px;
+   	}
+   	.info h3{
+   		margin-left: 20px;
+   		margin-bottom: 20px;
+   	}
+   	.info select{
+   		margin-left: 20px;
+   		height: 50px;
+   		font-size: 20px;
+   	}
+   	.info input{
+   		font-size: 25px;
+   		margin-top: 50px;
+   		background: green;
+   		color: white;
+   		height: 60px;
+   		width: 150px;
+   		border: none;
+   	}
+   	.info input:hover{
+   		opacity: 0.9;
+	   }
+	.cus{
+		justify-content: center;
+		text-align: center;
+	}   
+	.searchcus{
+		width: 40%;
+		margin-top: 10px;
+		justify-content: center;
+		text-align: center;
+		border: 1px solid black;
+		border-radius: 10px;
+		height: 40px;
+	}
+	.searchcus input{
+		width: 80%;
+		border: none;
+		height: 35px;
+	}   
+	.searchcus input:focus{
+		outline-style: none;
+	}
+	.searchcus button{
+		width: 10%;
+		background: no-repeat;
+		border: 0px;
+		size: 40px;
+	}
+	.searchcus button:hover{
+		opacity: 0.5;
+	}
+	.searchcus button:active{
+		outline-style: none;
+	}
+	.searchcus button:focus{
+		outline-style: none;
+	}
+@media only screen and (max-width: 1024px){
+	.name{
+		min-width: 30%;
+		margin-left: -50px;
+	}
+	.funtion{
+		width: 58%;
+	}
+	.search{
+		min-width: 48%;
+	}
+	.cart , .account{
+		min-width: 20%;
+		margin-left: 20px;
+	}
+}
+@media only screen and (max-width: 768px){
+	.header{
+		width: 100%;
+		display: inline-block;
+	}
+	.mobimenu{
+		display: inline-block;
+		float: left;
+		margin-top: 20px;
+	}
+	.mobimenu button{
+		border: none;
+		background: no-repeat;
+	}
+	.mobicart{
+		display: inline-block;
+		float: right;
+		padding-right: 20px;
+		margin-top: 20px;
+	}
+	.mobicart button{
+		border: none;
+		background: no-repeat;
+	}
+	.name{
+		width: 100%;
+		float: none;
+		display: block;
+		margin-left: 10px;
+		text-align: center;
+	}
+	.name a{
+		font-size: 30px;
+		margin-left: 0px;
+	}
+	.name i{
+		font-size: 25px;
+		margin-top: 20px;
+	}
+	.funtion{
+		float: none;
+		width: 100%;
+	}
+	.search{
+		margin-left: 0px;
+		width: 100%;
+		display: inline-block;
+		margin-top: -19px;
+	}
+	.cart, .account{
+		display: none;
+	}
+	.menu{
+		display: none;
+		position: relative;
+		height: auto;
+		width: 100%;
+		text-align: center;
+	}
+	.menu li{
+		display: none;
+	}
+	.mobilist{
+		display: flex;
+		position: relative;
+		flex-shrink: 0;
+		-webkit-flex-shrink: 0;
+	}
+	.mobimenu button:active .menu{
+		background: white;
+		display: flex;
+	}
+}

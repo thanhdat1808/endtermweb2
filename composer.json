@@ -1,0 +1,12 @@
+{
+    "name": "learnlavavel/my_project",
+    "description": "My New Project",
+    "authors": [
+    {
+        "name": "Thanh Dat",
+        "email": "thanhdat2000dn@gmail.com"
+    }],
+    "require": {
+        "monolog/monolog": "1.12.0"
+    }
+}
