@@ -12,16 +12,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<?php
-if(session('role')=='admin'){
-?>
+
+@if(session('role')=='admin')
+
 <div class="row admin" style="margin-right: 0px;margin-left: 0px;">
 	
-	<div>@include('shop.menuleft')</div> 
-	
-	<?php 
-
- 	?>
+	<div>@include('shop.menuleft')</div>
 	<div class="col-lg-9 content">
 		<div class="row add">
 			<a href="themsp"><button title="Thêm sản phẩm mới!"><i class="fa fa-plus"></i></button></a>
@@ -42,7 +38,7 @@ if(session('role')=='admin'){
 				</tr>
 				<?php 
 				$n=1;
-				foreach($pro as $pro){
+				foreach($pros as $pro){
 					echo "<tr>";
 					echo "<td>$n</td>";
 					echo '<td>'.$pro->id.' </td>';
@@ -66,21 +62,17 @@ if(session('role')=='admin'){
 					$n++;
 				}
 				 ?>
+				 {{ $pros->links() }}
 			</table>
 		</div>
 	</div>
 </div>
 
-<?php 
-}
-else{
-	echo"Bạn không có quyền truy cập trang!";
-?>
+
+@else <h1>Bạn không có quyền truy cập trang!</h1>
 <br>
 <a href="index">Quay lại trang chủ</a>
-<?php
-} 
- ?>
+@endif
 </body>
 </html>
 

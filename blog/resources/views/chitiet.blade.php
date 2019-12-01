@@ -44,7 +44,7 @@ session_start();
 		</div>
 		
 		<div class="col-lg-5 buy">
-			<a href="thanhtoan.php"><button style="background:red;border:none; color: white">Mua ngay</button></a>
+			<a href="thanhtoan"><button style="background:red;border:none; color: white">Mua ngay</button></a>
 		</div>
 	</div>
 

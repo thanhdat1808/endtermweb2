@@ -14,7 +14,7 @@
 		
 		<div class="cart">
 			<li>
-			<a href="cart.php"><i class="fa fa-cart-plus" title="Giỏ hàng"></i></a>
+			<a href="cart"><i class="fa fa-cart-plus" title="Giỏ hàng"></i></a>
 			</li>
 
 		</div>

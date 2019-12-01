@@ -6,18 +6,19 @@ use App\sanpham;
 use App\admin;
 use App\donhang;
 use App\ctdonhang;
+use Session;
 class MyController extends Controller
 {
 public function Gethome(Request $request){
 if(@$request->get('danhmuc')){
-    $pro = sanpham::where('danhmuc',$request->get('danhmuc'))->get();
+    $pros = sanpham::where('danhmuc',$request->get('danhmuc'))->paginate(9);
 }
 elseif(@$request->get('ten')){
-    $pro = sanpham::where('ten','like','%'.$request->get('ten').'%')->get();
+    $pros = sanpham::where('ten','like','%'.$request->get('ten').'%')->paginate(9);
 }
-else $pro=sanpham::all();
+else $pros=sanpham::paginate(9);
 
- return view('index',compact('pro'));
+ return view('index',compact('pros'));
     }
 public function Postlogin(Request $request)
     {
@@ -30,8 +31,8 @@ public function Postlogin(Request $request)
        if($user=='admin'){
         session()->put('role','admin');
         session()->put('name','Admin');
-        $pro=sanpham::all();
-        return view('admin',compact('pro'));
+        $pros=sanpham::paginate(7);
+        return  redirect('admin');
        }
        else{
         $cus=khachhang::where('password',$pass)->where('username',$user)->get();
@@ -42,14 +43,22 @@ public function Postlogin(Request $request)
         session()->put('role','cus');
      session()->put('id',$id);
      session()->put('name',$name);
-     $pro=sanpham::all();
-     return view('index', compact('pro'));
+     if(@$request->get('login')){
+     $pros=sanpham::paginate(9);
+     return redirect()->back();
+     }
+     else return view('order');
        }
     }
 public function Getlogout(){
+    $name=session('name');
         session()->forget("name");
-        $pro=sanpham::all();
-        return view('index',compact('pro'));
+        session()->forget("role");
+    if($name=='Admin') return redirect('index');    
+    else{
+        session()->forget("id");
+        return redirect()->back();
+    } 
     }    
 public function Postaddacc(Request $request){
     $user = $request->user;
@@ -61,6 +70,7 @@ public function Postaddacc(Request $request){
     $cus->phone = $request->input('phone');
     $cus->address = $request->input('add');
     $cus->email = $request->input('email');
+    $cus->gender = $request->input('gender');
     $cus->save();
     $cus=khachhang::where('password',$pass)->where('username',$user)->get();
        foreach($cus as $cus){
@@ -68,8 +78,9 @@ public function Postaddacc(Request $request){
            $id=$cus->id;
        }
     session()->put('id',$id);
-    $pro=sanpham::all();
-       return view('index', compact('id','name','pro'));
+    session()->put('name',$name);
+    $pros=sanpham::paginate(9);
+       return view('index', compact('id','pros'));
 }
 public function Getchitiet(Request $request){
     $id=$request->get('id');
@@ -77,8 +88,8 @@ public function Getchitiet(Request $request){
     return view('chitiet',compact('pro'));
     }
 public function Getadmin(){
-    $pro=sanpham::all();
-    return view('admin',compact('pro'));
+    $pros=sanpham::paginate(7);
+    return view('admin',compact('pros'));
 }
 public function Getaddpro(Request $request){
     $pro=new sanpham;
@@ -90,8 +101,8 @@ public function Getaddpro(Request $request){
     $pro->mota=$request->input('content');
     $pro->anh=$request->input('img');
     $pro->save();
-    $pro=sanpham::all();
-    return view('admin',compact('pro'));
+    
+    return redirect('admin');
 }
 public function Getdelete(Request $request){
     $id=$request->get('id');
@@ -165,6 +176,98 @@ public function Getdoanhthu(Request $request){
     }
     $revenue=donhang::where('status','Đã giao hàng')->groupby('date')->get();
     return view('doanhthu', compact('revenue','total'));
+}
+public function Getaddcart(Request $request){
+    if (@$request->get('id')) {
+        # code...
+        $id=$request->get('id');
+        if(!Session::has('cart')){
+            $cart[$id]=1;
+        }
+        else{
+            $cart=session('cart');
+            if(@$cart[$id]){
+                $cart[$id]++;
+            }
+            else $cart[$id]=1;
+        }
+        session()->put('cart',$cart);
+    }
+    $pro=sanpham::all();
+    if(@$request->get('local')) return redirect('cart');
+    else return redirect()->back();
+}
+public function Getcart(){
+    if (@session('cart')) {
+        # code...
+    $cart=session('cart');
+    foreach($cart as $id => $total){
+        $t[]=$id;
+    }  
+   
+    $pro=sanpham::whereIn('id',$t)->get();
+    return view('cart', compact('pro','cart'));
+    }
+    else{
+         return view('cart');
+    }
+}
+public function Getorder(){
+    $id=session('id');
+    $cus=khachhang::where('id',$id)->get();
+    $cart=session('cart');
+    foreach($cart as $id => $total){
+        $t[]=$id;
+    }  
+    $pro=sanpham::whereIn('id',$t)->get();
+    return view('order',compact('cus','pro'));
+}
+public function Getthanhtoan(Request $request){
+    $typepay=$request->get('typepay');
+    $idcart=donhang::max('idcart');
+    $idcart+=1;
+    $cart=session('cart');
+    $d=0;
+    foreach($cart as $id => $number){
+        $pro=sanpham::where('id',$id)->get();
+        foreach($pro as $pro){
+            $t=new ctdonhang;
+            $t->id=$idcart;
+            $t->idsp=$pro->id;
+            $t->tensp=$pro->ten;
+            $t->soluong=$number;
+            $t->gia=$pro->gia;
+            $t->save();
+            $c=$number*$pro->gia;
+            $d=$d+$c;
+        }
+    }
+    $don=new donhang;
+    $don->idcus=session('id');
+    $don->idcart=$idcart;
+    $don->date=date('Y-m-d');
+    $don->tongtien=$d;
+    $don->typepay=$typepay;
+    $don->status='Đang xử lý';
+    $don->save();
+    session()->forget('cart');
+    
+    return redirect('index');
+}
+public function Getaccount(){
+    return view('account');
+}
+public function Geteditcart(Request $request){
+    $id=$request->get('id');
+    $total=$request->get('total');
+    $cart = session('cart');
+    if ($total>0) {
+        # code...
+        $cart[$id]=$total;
+    }
+    else unset($cart[$id]);
+    session()->put('cart',$cart);
+    return redirect()->back();
 }
 }
 ?>

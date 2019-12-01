@@ -307,7 +307,15 @@
     }
     .content-signup input:hover{
       opacity: 0.8;
-    }
+	}
+	.content-signup select{
+		height: 40px;
+      border-radius: 10px;
+      border: 1px solid #EEEEEE;
+      margin-top: 10px; 
+      padding-left: 10px; 
+      width: 100px;
+	}
     .admin{
     	width: 100%;
     	}
@@ -596,6 +604,25 @@
 	.searchcus button:focus{
 		outline-style: none;
 	}
+	.item{
+		margin-left: 20px;
+		justify-content: center;
+		text-align: center;
+	}
+	.item img{
+		height: 250px;	
+		background: none;
+	}
+	.item img:hover{
+		opacity: 0.8;
+	}
+	.viewaccount{
+		padding-top: 120px;
+	}
+	.infocus{
+		justify-content: center;
+		text-align: center;
+	}
 @media only screen and (max-width: 1024px){
 	.name{
 		min-width: 30%;
@@ -610,6 +637,9 @@
 	.cart , .account{
 		min-width: 20%;
 		margin-left: 20px;
+	}
+	.chitiet img{
+		max-width: 200px;
 	}
 }
 @media only screen and (max-width: 768px){
@@ -683,5 +713,8 @@
 	.mobimenu button:active .menu{
 		background: white;
 		display: flex;
+	}
+	.chitiet img{
+		max-width: 200px;
 	}
 }

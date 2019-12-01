@@ -25,8 +25,15 @@
 	<input type="text" name="phone" placeholder="Số điện thoại" title="Số điện thoại của bạn!" required="">
 	<input type="email"id="a1" name="email" placeholder="Email" title="Email của bạn!" required="">
 	<input type="text" name="add" id="a1" placeholder="Địa chỉ" title="Địa chỉ của bạn!" required="">
-	<input type="text"id="a1" name="user" placeholder="Tên đăng nhập" title="Chọn tên đăng nhập cho tài khoản của bạn!" required="">
-	<input type="password" id="a1" name="pass" placeholder="Mật khẩu" title="Nhập mật khẩu cho tài khoản của banj" minlength="4" required="">
+	<select name="gender" id="">
+		<option value="Nam">Nam</option>
+		<option value="Nữ">Nữ</option>
+		<option value="Khác">Khác</option>
+	</select>
+	<input type="text"id="a1" name="user" placeholder="Tên đăng nhập" 
+	title="Chọn tên đăng nhập cho tài khoản của bạn!" required="">
+	<input type="password" id="a1" name="pass" placeholder="Mật khẩu" title="Nhập mật khẩu cho tài khoản của bạn" 
+	minlength="4" required="">
 	<br><br>
 	<input type="submit" name="dangky" value="Đăng ký" style="width: auto; border-radius: 10px; background:green;color: white">
 	<input type="reset" value="Làm mới" style="height: 40px;width: auto; border-radius: 10px; margin-left: 10px;background:green;color: white">
