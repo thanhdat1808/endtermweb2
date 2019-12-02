@@ -8,9 +8,12 @@
 				<a href="khachhang"><li><b>Quản lý khách hàng</b></li></a>
 				<a href="qldonhang"><li><b>Đơn hàng</b></li></a>
 				<a href="doanhthu"><li><b>Doanh thu</b></li></a>
+				
 			</ul>
-			<form method="GET" action='logout'>
+			<div class="logout"> 
+				<form method="GET" action='logout'>
 				<input type="submit" name="logout" value="Đăng xuất">
-			</form>
+				</form>
+				</div>
 		</div>
 		</div>

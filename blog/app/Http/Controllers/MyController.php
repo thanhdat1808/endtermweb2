@@ -255,7 +255,11 @@ public function Getthanhtoan(Request $request){
     return redirect('index');
 }
 public function Getaccount(){
-    return view('account');
+    if(@session('id')){
+    $acc=khachhang::where('id',session('id'))->get();
+    return view('account', compact('acc'));
+    }
+    else return redirect('index');
 }
 public function Geteditcart(Request $request){
     $id=$request->get('id');

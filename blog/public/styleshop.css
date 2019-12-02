@@ -250,7 +250,7 @@
 }
 .modal-content{
 	border-radius: 20px;
-	background:linear-gradient(60deg,pink,#BE81F7,#8181F7);
+	background:linear-gradient(60deg,#A9A9F5,#A9A9F5,#8181F7);
 }
 .form-login input{
 	width: 80%;
@@ -339,13 +339,13 @@
     width: 80%;
     }
     .manager{
-
     	text-align: center;
     	display: flex;
     	justify-content: center;
     }
     .manager ul{
-    	list-style: none;
+		list-style: none;
+		justify-content: center;
     }
     .manager li{
     	margin-left: -40px;
@@ -356,13 +356,17 @@
     .manager li:hover{
 		background: white;
 		color: black;
-    }
+	}
+	.logout{
+		width: 100%;
+		justify-content: center;
+	}
     .manager input{
     	background: no-repeat;
     	border: 1px solid white;
     	color: white;
     	height: 40px;
-    	margin-bottom: 45px;
+    	margin-top: 45px;
     	border-radius: 10px;
     }
     .manager input:hover{
@@ -622,6 +626,22 @@
 	.infocus{
 		justify-content: center;
 		text-align: center;
+		font-size: 20px;
+	}
+	.infocus table{
+		width: 100%;
+	}
+	.infocus input{
+		width: 100%;
+		height: auto;
+		margin-top: 15px;
+		padding-left: 10px;
+	}
+	.infocus p{
+		margin-top: 20px;
+	}
+	.infocus h1{
+		margin-top: 20px;
 	}
 @media only screen and (max-width: 1024px){
 	.name{
@@ -640,6 +660,9 @@
 	}
 	.chitiet img{
 		max-width: 200px;
+	}
+	.menuleft{
+		position: relative;
 	}
 }
 @media only screen and (max-width: 768px){
@@ -716,5 +739,8 @@
 	}
 	.chitiet img{
 		max-width: 200px;
+	}
+	.menuleft{
+		position: relative;
 	}
 }
