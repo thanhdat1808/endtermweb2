@@ -69,9 +69,9 @@ $t=0;
 		echo '<input type="hidden" name="id" value="'.$pro->id.'">';
 		echo '<td><img src= img/'.$pro->anh.' style="width:80px;"></td>';
 		echo '<td>'.$pro->ten.' </td>';
-		echo '<td>'.$pro->gia.'x </td>';
+		echo '<td>'.number_format($pro->gia,0).'x </td>';
 		echo '<td>'.$cart[$pro->id].'=</td>';
-		echo '<td>'.$pro->gia*$cart[$pro->id].' VND</td>';
+		echo '<td>'.number_format($pro->gia*$cart[$pro->id],0).' VND</td>';
 		echo "</tr>";
 		$d=$pro->gia*$cart[$pro->id];
 		$t=$t+$d;
@@ -80,7 +80,7 @@ $t=0;
 	<tr>
 		<h3>Tổng tiền:</h3>
 
-	<h3><b><?php echo $t; ?> VND</b></h3>
+	<h3><b>{{number_format($t,0)}} VND</b></h3>
 		
 	</tr>
 	</table>

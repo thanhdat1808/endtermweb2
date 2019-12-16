@@ -40,3 +40,4 @@ Route::get('/thanhtoan','MyController@Getthanhtoan');
 Route::get('/account','MyController@Getaccount');
 Route::get('/editcart','MyController@Geteditcart');
 Route::get('/deletecart','MyController@Geteditcart');
+Route::get('/updateacc','MyController@Getupdateacc');

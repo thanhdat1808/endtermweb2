@@ -24,7 +24,8 @@ if(session('role')=='admin'){
  					<td>STT</td>
  					<td>ID</td>
  					<td>ID khách hàng</td>
- 					<td>Ngày đặt hàng</td>
+					 <td>Ngày đặt hàng</td>
+					 <td>Ngày nhận hàng</td>
  					<td>Hình thức thanh toán</td>
  					<td>Tổng tiền</td>
  					<td>Trạng thái</td>
@@ -38,13 +39,16 @@ if(session('role')=='admin'){
 					echo '<td>'.$don->id.'</td>';
 					echo '<td>'.$don->idcus.' </td>';
 					echo '<td><a href="qldonhang?date='.$don->date.'">'.$don->date.'</a> </td>';
+					echo '<td><a href="qldonhang?datepay='.$don->datepay.'">'.$don->datepay.'</a> </td>';
 					echo '<td>'.$don->typepay.' </td>';
-					echo '<td>'.$don->tongtien.' </td>';
+					echo '<td>'.number_format($don->tongtien,0).' VND </td>';
 					?>
 					<td>
 						<form method="GET" action="capnhat">
 						<input type="hidden" name="id" value="<?php echo $don->id ?>">
-						<select style="border: none;" name="status">
+						@if($don->status=='Đã giao hàng') Đã giao hàng
+						<td></td>
+						@else <select style="border: none;" name="status">
 							<option <?php if ($don->status=='Đang xử lý') {
              				 # code...
              				echo "selected=selected";
@@ -65,6 +69,7 @@ if(session('role')=='admin'){
 						
 					</td>
 					<td><input type="submit" name="capnhat" value="Cập nhật"></td>
+					@endif
 					</form>
 					<?php
 					echo '<td><a href="ctdonhang?id='.$don->id.'">Chi tiết</a></td>	';

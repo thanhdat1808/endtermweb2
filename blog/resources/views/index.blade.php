@@ -32,19 +32,22 @@
 			<h3>{{$pro->ten}}</h3>
 
 		</a>
-		<h3>{{$pro->gia}} VND</h3>
+		<h3>{{number_format($pro->gia,0)}} VND</h3>
 		<a href="addcart?id={{$pro->id}}"><button style="border: 1px solid green;" onclick="alert('Đã thêm vào giỏ hàng')"><b><i class="fa fa-plus"></i> Thêm vào giỏ hàng</b></button></a>
 		<a href="addcart?id={{$pro->id}}&local=cart"><button ><b style="margin-top: 0px;"><i class="fa fa-cart-plus"></i> Mua ngay</b></button></a>
 		<hr>
 
 </div>
 @endforeach
-	 {{ $pros->links() }}
+     {{ $pros->links() }}
+     <br>
+<div class="row title1">
+<h1>Sản phẩm nổi bật</h1>
+</div>
 <div class="owl-carousel owl-theme" style="margin-bottom: 20px;">
-<?php
-	for ($i=0; $i <3 ; $i++) { 
-		# code...
-	?>
+
+	@for ($i=0; $i <3 ; $i++) 
+	
     <div class="item"><a href="index?ten=iphone 11"><img src="https://cdn.tgdd.vn/Products/Images/42/210653/iphone-11-pro-max-256gb-green-400x460.png"
 	 alt="HTML tutorial" style="width: auto;"></a></div>
 	 <div class="item"><a href="index?ten=iphone x"><img src="https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1100345574.jpeg"
@@ -52,13 +55,14 @@
 	 <div class="item"><a href="index?ten=laptop MIS"><img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/7/29/637000093289504897_msi-gf63-9rcx-1.png"
 	 alt="HTML tutorial"style="width: auto;"></a></div>
 	 <div class="item"><a href="index?ten=ipad pro"><img src="https://www.did.ie/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/l/mlmn2b_a.jpg"
-	 alt="HTML tutorial"style="width: auto;"></a></div>
-	<?php
-	}
-	 ?>
+     alt="HTML tutorial"style="width: auto;"></a></div>
+     @endfor
 </div>
-<h1>Sản phẩm nổi bật</h1>
+
+@include('footer')
+
 </div>
+
 @include('shop.form')
 </body>
 </html>

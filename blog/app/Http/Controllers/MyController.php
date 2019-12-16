@@ -40,14 +40,16 @@ public function Postlogin(Request $request)
             $name=$cus->name;
             $id=$cus->id;
         }
-        session()->put('role','cus');
+     session()->put('role','cus');
      session()->put('id',$id);
      session()->put('name',$name);
      if(@$request->get('login')){
      $pros=sanpham::paginate(9);
      return redirect()->back();
      }
-     else return view('order');
+     else{ 
+         return redirect('order');
+     }
        }
     }
 public function Getlogout(){
@@ -145,15 +147,21 @@ public function Getqldonhang(Request $request){
         $date=$request->get('date');
         $don=donhang::where('date',$date)->get();
     }
+    elseif($request->get('datepay')){
+        $date=$request->get('datepay');
+        $don=donhang::where('datepay',$date)->get();
+    }
     else $don = donhang::all();
     return view('qldonhang',compact('don'));
 }
 public function Getcapnhat(Request $request){
     $don=donhang::find($request->get('id'));
-    $don->status=$request->get('status');
+    $status=$request->get('status');    
+    $don->status=$status;
+    if($status=='Đã giao hàng') $don->datepay=date('Y-m-d');
     $don->save();
     $don = donhang::all();
-    return view('qldonhang',compact('don'));
+    return redirect()->back();
 }
 public function Getctdonhang(Request $request){
     $id=$request->get('id');
@@ -170,11 +178,11 @@ public function Getctdonhang(Request $request){
     return view('ctdonhang', compact('cus','ct'));
 }
 public function Getdoanhthu(Request $request){
-    $revenue=donhang::where('status','Đã giao hàng')->groupby('date')->get();
+    $revenue=donhang::where('status','Đã giao hàng')->groupby('datepay')->get();
     foreach($revenue as $rev){
-    $total[$rev->date]=donhang::where('date',$rev->date)->where('status','Đã giao hàng')->sum('tongtien');
+    $total[$rev->datepay]=donhang::where('datepay',$rev->datepay)->where('status','Đã giao hàng')->sum('tongtien');
     }
-    $revenue=donhang::where('status','Đã giao hàng')->groupby('date')->get();
+    $revenue=donhang::where('status','Đã giao hàng')->groupby('datepay')->get();
     return view('doanhthu', compact('revenue','total'));
 }
 public function Getaddcart(Request $request){
@@ -272,6 +280,25 @@ public function Geteditcart(Request $request){
     else unset($cart[$id]);
     session()->put('cart',$cart);
     return redirect()->back();
+}
+public function Getupdateacc(Request $request){
+    if(@$request->get('info')){
+        $cus=khachhang::find($request->input('id'));
+        $cus->name=$request->input('name');
+        $cus->phone=$request->input('phone');
+        $cus->email=$request->input('email');
+        $cus->address=$request->input('add');
+        $cus->gender=$request->input('gender');
+        $cus->save();
+        return redirect()->back();
+    }
+    else{
+        $cus=khachhang::find($request->input('id'));
+        $cus->username=$request->input('user');
+        $cus->password=$request->input('newpass');
+        $cus->save();
+        return redirect()->back();
+    }
 }
 }
 ?>

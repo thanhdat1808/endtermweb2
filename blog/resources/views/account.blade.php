@@ -14,25 +14,26 @@
 <div>@include('shop.menu');</div>   
 <div class="row viewaccount"style="margin-right:  0px; margin-left: 0px; text-align: center;width: 100%;justify-content: center;">
 <div class="col-lg-6 infocus">
-<?php foreach($acc as $acc){ ?>
+@foreach($acc as $acc)
 	<h1>Hồ sơ của tôi</h1>
-	<form action="update" method="Get">
+	<form action="updateacc" method="Get">
 <table>
     <tr>
+		<input type="hidden" name="id" value="{{$acc->id}}" required>
         <td><p>Tên </p></td>
-        <td><input type="text" name="name" value="{{$acc->name}}"></td>
+        <td><input type="text" name="name" value="{{$acc->name}}" required></td>
 	</tr>
 	<tr>
 		<td><p>Số điện thoại </p></td>
-		<td><input type="text" name="phone" value="{{$acc->phone}}"></td>
+		<td><input type="text" name="phone" value="{{$acc->phone}}" required></td>
 	</tr>
     <tr>
 		<td><p>Email </p></td>
-		<td><input type="email" name="email" value="{{$acc->email }}"></td>
+		<td><input type="email" name="email" value="{{$acc->email }}" required></td>
 	</tr>
 	<tr>
 		<td><p>Địa chỉ </p></td>
-		<td><input type="text" name="add" value="{{$acc->address}}"></td>
+		<td><input type="text" name="add" value="{{$acc->address}}" required></td>
 	</tr>
 		<tr>
 		<td><p>Giới tính </p></td>
@@ -52,43 +53,45 @@
 		</tr>
 	<tr>
 		<td></td>
-		<td><input type="submit" value="Cập nhật"></td>
+		<td><input type="submit" name="info" value="Cập nhật"></td>
 	</tr>
 </table>
 </form>
 <hr>
-<form action="update" method="GET" name="f1" onsubmit="return check()">
+<form action="updateacc" method="GET" name="f1" onsubmit="return check()">
 	<h1>Tài khoản của tôi</h1>
 	<table>
+		<input type="hidden" name="id" value="{{$acc->id}}">
 		<input type="hidden" value="{{$acc->password}}" name="oldpass">
 	<tr>
 		<td>Tên đăng nhập</td>
-		<td><input type="text" name="user" value={{$acc->username}}></td>
+		<td><input type="text" name="user" value="{{$acc->username}}" required></td>
 	</tr>
 	<tr>
 		<td>Mật khẩu cũ</td>
-		<td><input type="password" name="oldpass1"></td>
+		<td><input type="password" name="oldpass1" required></td>
 	</tr>
 	<tr>
 		<td>Mật khẩu mới</td>
-		<td><input type="password" name="newpass"></td>
+		<td><input type="password" name="newpass" required></td>
 	</tr>
 	<tr>
 		<td>Nhập lại mật khẩu mới</td>
-		<td><input type="password" name="newpass2"></td>
+		<td><input type="password" name="newpass2" required></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td><input type="submit" value="Cập nhật"></td>
+		<td><input type="submit" name="acc" value="Cập nhật"></td>
 	</tr>
 	</table>
 </form>
 <hr>
 <h1>Đơn hàng của tôi</h1>
-		<?php }?>
+@endforeach
 
 </div>
 </div>
+@include('footer')
 @include('shop.form')
 </body>
 </html>

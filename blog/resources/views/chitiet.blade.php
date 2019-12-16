@@ -29,14 +29,14 @@ session_start();
 		$anh = $pro->anh;
 	}
 	 ?>
-	 <div class="col-lg-4">
+	 <div class="col-lg-4" data-toggle="modal" data-target="#img">
 	 	<img src="img/<?php echo$anh ?>">
 	 </div>
 	 <div class="col-lg-8">
 	 	<h1><?php echo $ten ?></h1><hr>
-	 	<h2><?php echo $gia ?> VND</h2>
+	 	<h2><?php echo number_format($gia,0) ?> VND</h2>
 	 	<h4>Nhà cung cấp: <?php echo $nhacungcap ?></h4>
-	 	<h4>Số lượng trong kho: <?php echo$soluong ?></h4><hr>
+	 	<h4>Còn lại: <?php echo$soluong ?> sản phẩm</h4><hr>
 	 	
 	 	<div class="row buttonct">
 		<div class="col-lg-5">
@@ -44,7 +44,7 @@ session_start();
 		</div>
 		
 		<div class="col-lg-5 buy">
-			<a href="thanhtoan"><button style="background:red;border:none; color: white">Mua ngay</button></a>
+			<a href="addcart?id={{$pro->id}}&local=cart"><button style="background:red;border:none; color: white">Mua ngay</button></a>
 		</div>
 	</div>
 
@@ -56,6 +56,7 @@ session_start();
 	 </div>
 </div>
 </div>
+@include('footer')
 @include('shop.form')
 </body>
 </html>

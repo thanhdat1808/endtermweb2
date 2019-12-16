@@ -13,7 +13,7 @@
 <body>
 <div>@include('shop.menu');</div>
 <div class="view" style="margin-left: 0px; margin-right: 0px;">
-<div class="giohang">
+<div class="row giohang">
 
 @if (@count($cart)>0)
 
@@ -27,47 +27,48 @@
 			<td><b>Tổng tiền</b></td>
 			<td></td>
 		</tr>
-		
-<?php
-$t=0;
- foreach ($pro as $pro){
- 	?>
+<?php $t=0; ?>
+ @foreach ($pro as $pro)
+
  	<form method="GET" action="editcart">	
- 	<?php
-		echo"<tr>";
-		echo '<input type="hidden" name="id" value="'.$pro->id.'">';
-		echo '<td><img src= img/'.$pro->anh.'></td>';
-		echo '<td>'.$pro->ten.' </td>';
-		echo '<td>'.$pro->nhacungcap.' </td>';
-		echo '<td>'.$pro->gia.' </td>';
-		echo '<td><input type="number" name="total" value="'.$cart[$pro->id].'" min="0" max="'.$pro->soluong.'" required> </td>';
-		echo '<td>'.$pro->gia*$cart[$pro->id].' VND</td>';
-		?>
+ 	
+		<tr></tr>
+		<input type="hidden" name="id" value="{{$pro->id}}">
+		<td><img src= "img/{{$pro->anh}}"></td>
+		<td>{{$pro->ten}}</td>
+		<td>{{$pro->nhacungcap}}</td>
+		<td>{{number_format($pro->gia,0)}}VND</td>
+		<td>
+		<button onclick="tru({{$pro->id}})"><b>-</b></button>
+		<input type="text" name="total" id="number{{$pro->id}}" value="{{$cart[$pro->id]}}" min="0" max="{{$pro->soluong}}" required> 
+		<button onclick="cong({{$pro->id}})"><b>+</b></button>
+		</td>
+		<td>{{number_format($pro->gia*$cart[$pro->id],0)}} VND</td>
+	
 		<td>
 			<button class="fa fa-upload" type="submit" title="Lưu"></button>
 		</td>
 		</form>
 		<td><a href="deletecart?id=<?php echo$pro->id ?>&total=0"><button class="fa fa-remove" title="Xóa"></button></a></td>
-		<?php
-		echo "</tr>";
+		<tr></tr>
+		<?php 
 		$d=$pro->gia*$cart[$pro->id];
 		$t=$t+$d;
-		$_SESSION["tongtien"]=$t;
-	} 
-	?>
+		?>
+@endforeach		
 	<tr>
 		<td><h2>Tổng số tiền là:</h2></td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><b><?php echo $t; ?> VND</b></td>
+		<td><b>{{number_format($t,0)}} VND</b></td>
 		
 	</tr>
 	</table>
-	@else<h1>Không có sản phẩm nào trong giỏ hàng</h1>
-	<hr>
-	<a href="index"><button>Quay lại trang chủ!</button></a>
+	@else<h3>Không có sản phẩm nào trong giỏ hàng, <a href="index">tiếp tục mua sắm!</a></h3>
+	
+	
 	@endif
 </div>
 </div>
@@ -90,3 +91,13 @@ $t=0;
 @include('shop.form');
 </body>
 </html>
+<script>
+function cong(id){
+	var n=document.getElementById("number"+id).value;
+	document.getElementById("number"+id).value=parseInt(n)+1;
+}
+function tru(id){
+	var n=document.getElementById("number"+id).value;
+	if(n>1)document.getElementById("number"+id).value=parseInt(n)-1;
+}
+</script>

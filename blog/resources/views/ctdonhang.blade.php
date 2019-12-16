@@ -46,15 +46,15 @@ if(session('role')=='admin'){
  		 				<td>Tên sản phẩm</td>
  		 				<td>Giá</td>
  		 				<td>Số lượng</td>
- 		 				<td>Tổng tiền</td>
+ 		 				<td>Thành tiền</td>
  		 			</tr>
  		 			<?php 
  		 			foreach($ct as $pro){
  		 				echo"<tr>";
 						echo '<td>'.$pro->tensp.' </td>';
-						echo '<td>'.$pro->gia.' </td>';
+						echo '<td>'.number_format($pro->gia,0).' VND </td>';
 						echo '<td>'.$pro->soluong.' </td>';
-						echo '<td>'.$pro->gia*$pro->soluong.' VND</td>';
+						echo '<td>'.number_format($pro->gia*$pro->soluong,0).' VND</td>';
  		 			}
  		 			 ?>
  		 		</table>

@@ -30,8 +30,8 @@ if(session('role')=='admin'){
 				foreach($revenue as $rev){
 					echo "<tr>";
 					echo "<td>$n</td>";
-					echo '<td>'.$rev->date.' </td>';
-					echo '<td>'.$total[$rev->date].' </td>';
+					echo '<td><a href="qldonhang?datepay='.$rev->datepay.'">'.$rev->datepay.'</a> </td>';
+					echo '<td>'.number_format($total[$rev->datepay],0).' VND </td>';
 					echo "</tr>";
 					$n++;
 				}
